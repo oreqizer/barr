@@ -10,10 +10,6 @@ struct Args {
     #[clap(short, long)]
     extension: Option<String>,
 
-    /// Prints debug output
-    #[clap(short, long)]
-    debug: bool,
-
     /// Files to process
     files: Vec<String>,
 }
