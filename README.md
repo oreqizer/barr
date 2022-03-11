@@ -1,6 +1,6 @@
 # `barr`
 
-Barrel your **JavaScript** files! :barrel:
+Barrel your **JavaScript** files! :oil_drum:
 
 - `cargo install barr`
 
