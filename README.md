@@ -26,7 +26,7 @@ export { default } from "./file";
 Flags:
 - `--extension <ext>` or `-e <ext>` to change the barrel file's extension
 - `--help` or `-h` to print usage information
-- `--version` or `-v` to print version
+- `--version` or `-V` to print version
 
 ## License
 
