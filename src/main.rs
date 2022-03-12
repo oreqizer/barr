@@ -1,4 +1,5 @@
 use clap::Parser;
+use std::thread;
 
 use barr::barrel_write;
 
@@ -18,6 +19,13 @@ fn main() {
     let args = Args::parse();
 
     for f in args.files {
-        barrel_write(&f, &args.extension);
+        let ext = match args.extension {
+            Some(ref s) => Some(s.clone()),
+            None => None,
+        };
+
+        thread::spawn(move || {
+            barrel_write(&f, ext);
+        });
     }
 }

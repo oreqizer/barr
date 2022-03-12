@@ -1,12 +1,12 @@
 use std::fs;
 use std::path::Path;
 
-pub fn barrel_write(filepath: &str, ext: &Option<String>) {
+pub fn barrel_write(filepath: &str, ext: Option<String>) {
     let path = Path::new(filepath);
 
     let file = path.file_stem().unwrap().to_str().unwrap();
     let ext = match ext {
-        Some(e) => e,
+        Some(ref e) => e,
         None => path.extension().unwrap().to_str().unwrap(),
     };
 
@@ -44,7 +44,7 @@ mod tests {
     fn write_barrel() {
         setup("tmp/1");
 
-        barrel_write("./tmp/1/file.js", &None);
+        barrel_write("./tmp/1/file.js", None);
 
         assert!(
             Path::new("./tmp/1/file/file.js").exists(),
@@ -66,7 +66,7 @@ mod tests {
     fn write_barrel_extension() {
         setup("tmp/2");
 
-        barrel_write("./tmp/2/file.js", &Some("ts".to_string()));
+        barrel_write("./tmp/2/file.js", Some("ts".to_string()));
 
         assert!(
             Path::new("./tmp/2/file/file.js").exists(),
