@@ -19,10 +19,7 @@ fn main() {
     let args = Args::parse();
 
     for f in args.files {
-        let ext = match args.extension {
-            Some(ref s) => Some(s.clone()),
-            None => None,
-        };
+        let ext = args.extension.as_ref().cloned();
 
         thread::spawn(move || {
             barrel_write(&f, ext);
